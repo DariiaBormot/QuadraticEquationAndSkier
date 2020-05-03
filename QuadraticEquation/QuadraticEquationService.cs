@@ -21,7 +21,7 @@ namespace QuadraticEquation
             }
             else if (discriminant < 0)
             {
-                Console.WriteLine("There are no square roots");
+                Console.WriteLine("There are no roots");
                 return Result;
 
             }
@@ -29,7 +29,7 @@ namespace QuadraticEquation
             {
                 double X1 = (-B + Math.Sqrt(discriminant)) / (2 * A);
 
-                Console.WriteLine($"There is one square root : {X1}");
+                Console.WriteLine($"There is one root : {X1}");
 
                 Result[0] = X1;
                 return Result;
@@ -42,7 +42,7 @@ namespace QuadraticEquation
                 Result[0] = X1;
                 Result[1] = X2;
 
-                Console.WriteLine($"There are two square roots \nX1: {X1} \nX1: {X2}");
+                Console.WriteLine($"There are two roots \nX1: {X1} \nX1: {X2}");
                 return Result;
 
             }
