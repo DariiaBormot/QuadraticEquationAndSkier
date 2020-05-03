@@ -11,7 +11,7 @@ namespace SkierExercise
         public double GetFinalDay(double firstDayDistance, double increasePercentage, double plannedDistance)
         {
 
-            if(DistanceInputValidation(firstDayDistance, plannedDistance) && PercentInputValidation(increasePercentage))
+            if(IsValidDistance(firstDayDistance, plannedDistance) && IsValidPercentInput(increasePercentage))
             {
                 var result = GetDay(firstDayDistance, increasePercentage, plannedDistance);
                 return result;
@@ -36,7 +36,7 @@ namespace SkierExercise
             return totalDays;
         }
 
-        public bool DistanceInputValidation(double firstDayDistance, double plannedDistance)
+        public bool IsValidDistance(double firstDayDistance, double plannedDistance)
         {
             if (firstDayDistance <= 0 || plannedDistance <= 0)
             {
@@ -51,7 +51,7 @@ namespace SkierExercise
             return true;
         }
 
-        public bool PercentInputValidation(double increasePercentage)
+        public bool IsValidPercentInput(double increasePercentage)
         {
             if(increasePercentage < 0 )
             {

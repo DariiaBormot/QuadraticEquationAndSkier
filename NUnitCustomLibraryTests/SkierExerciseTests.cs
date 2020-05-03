@@ -15,27 +15,27 @@ namespace NUnitCustomLibraryTests
 
         [TestCase(500)]
         [TestCase(0)]
-        public void PercentInputValidation_PositiveOrZero_True(double input) 
+        public void IsValidPercentInput_PositiveOrZero_True(double input) 
         {
-            var actualResult = _daysTraker.PercentInputValidation(input);
+            var actualResult = _daysTraker.IsValidPercentInput(input);
 
             Assert.IsTrue(actualResult);
         }
 
         [TestCase(-80)]
         [TestCase(-9000)]
-        public void PercentInputValidation_NegativeInput_False(double input)
+        public void IsValidPercentInput_NegativeInput_False(double input)
         {
-            var actualResult = _daysTraker.PercentInputValidation(input);
+            var actualResult = _daysTraker.IsValidPercentInput(input);
 
             Assert.IsFalse(actualResult);
         }
 
         [TestCase(50, 500)]
         [TestCase(10, 70)]
-        public void DistanceInputValidation_ValidInput_True(double input1, double input2)
+        public void IsValidDistance_ValidInput_True(double input1, double input2)
         {
-            var actualResult = _daysTraker.DistanceInputValidation(input1, input2);
+            var actualResult = _daysTraker.IsValidDistance(input1, input2);
 
             Assert.IsTrue(actualResult);
         }
@@ -43,9 +43,9 @@ namespace NUnitCustomLibraryTests
         [TestCase(-900, 500)]
         [TestCase(900, -500)]
         [TestCase(-900, -500)]
-        public void DistanceInputValidation_NegativeInput_False(double input1, double input2)
+        public void IsValidDistance_NegativeInput_False(double input1, double input2)
         {
-            var actualResult = _daysTraker.DistanceInputValidation(input1, input2);
+            var actualResult = _daysTraker.IsValidDistance(input1, input2);
 
             Assert.IsFalse(actualResult);
         }
@@ -53,17 +53,17 @@ namespace NUnitCustomLibraryTests
         [TestCase(0, 500)]
         [TestCase(900, 0)]
         [TestCase(0, 0)]
-        public void DistanceInputValidation_ZeroInput_False(double input1, double input2)
+        public void IsValidDistance_ZeroInput_False(double input1, double input2)
         {
-            var actualResult = _daysTraker.DistanceInputValidation(input1, input2);
+            var actualResult = _daysTraker.IsValidDistance(input1, input2);
 
             Assert.IsFalse(actualResult);
         }
 
         [TestCase(10000, 500)]
-        public void DistanceInputValidation_InitialBiggerThanTotal_False(double input1, double input2)
+        public void IsValidDistance_InitialBiggerThanTotal_False(double input1, double input2)
         {
-            var actualResult = _daysTraker.DistanceInputValidation(input1, input2);
+            var actualResult = _daysTraker.IsValidDistance(input1, input2);
 
             Assert.IsFalse(actualResult);
         }
