@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using NUnit.Framework;
 using SkierExercise;
 
@@ -80,16 +81,19 @@ namespace NUnitCustomLibraryTests
             Assert.AreEqual(expectedResult, actualResult);
         }
 
-        [TestCase(0, 5, 0, 0)] // distance == 0
-        [TestCase(10, -5, 50, 0)] // if distance increase percent is negative
-        [TestCase(50, 5, 5, 0)] // initial distance bigger than planned distance 
-        [TestCase(-10, -8, -50, 0)] // negative values 
-        [TestCase(0, 0, 0, 0)] // zero values
-        public void GetFinalDay_InvalidInput_Zero(double a, double b, double c, double expectedResult) 
-        {
-            var actualResult = _daysTraker.GetFinalDay(a, b, c);
+        //[TestCase(0, 5, 0, 0)] // distance == 0
+        //[TestCase(10, -5, 50, 0)] // if distance increase percent is negative
+        //[TestCase(50, 5, 5, 0)] // initial distance bigger than planned distance 
+        //[TestCase(-10, -8, -50, 0)] // negative values 
+        //[TestCase(0, 0, 0, 0)] // zero values
 
-            Assert.AreEqual(expectedResult, actualResult);
+
+
+        [Test, TestCaseSource(typeof(MyFactoryClass), "TestCases")]
+        public double GetFinalDay_InvalidInput_Zero(double a, double b, double c) 
+        {
+            return _daysTraker.GetFinalDay(a, b, c);
+
         }
 
         [TestCase(double.MaxValue, double.MaxValue, double.MaxValue,  3 )]
@@ -101,5 +105,20 @@ namespace NUnitCustomLibraryTests
             Assert.AreEqual(expectedResult, actualResult);
         }
 
+    }
+
+    public class MyFactoryClass
+    {
+        public static IEnumerable TestCases
+        {
+            get
+            {
+                yield return new TestCaseData(0, 5, 0).Returns(0);
+                yield return new TestCaseData(10, -5, 50).Returns(0);
+                yield return new TestCaseData(50, 5, 5).Returns(0);
+                yield return new TestCaseData(-10, -8, -50).Returns(0);
+                yield return new TestCaseData(0, 0, 0).Returns(0);
+            }
+        }
     }
 }
